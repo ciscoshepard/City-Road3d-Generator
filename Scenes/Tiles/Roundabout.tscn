@@ -1,19 +1,21 @@
 """[gd_scene load_steps=2 format=3]
 
-[node name="StraightRoad" type="Node3D"]
+[node name="Roundabout" type="Node3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform.IDENTITY
 
 [node name="Mesh" type="MeshInstance3D" parent="Pivot"]
-mesh = BoxMesh.new()
-mesh.size = Vector3(10, 0.2, 10)
+mesh = CylinderMesh.new()
+mesh.top_radius = 4
+mesh.bottom_radius = 4
+mesh.height = 0.2
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Pivot"]
-shape = BoxShape3D.new()
-shape.size = Vector3(10, 0.2, 10)
+shape = CylinderShape3D.new()
+shape.radius = 4
+shape.height = 0.2
 
 [node name="Material" type="StandardMaterial3D" parent="Mesh"]
-albedo_color = Color(0.12,0.12,0.12)
+albedo_color = Color(0.1,0.1,0.1)
 roughness = 0.9
 """

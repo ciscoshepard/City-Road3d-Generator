@@ -1,9 +1,8 @@
 """[gd_scene load_steps=2 format=3]
 
-[node name="StraightRoad" type="Node3D"]
+[node name="TIntersection" type="Node3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform.IDENTITY
 
 [node name="Mesh" type="MeshInstance3D" parent="Pivot"]
 mesh = BoxMesh.new()

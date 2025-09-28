@@ -1,0 +1,13 @@
+[gd_resource type="TilePivotConfig" load_steps=2 format=3]
+script = ExtResource("res://Scripts/TilePivotConfig.gd")
+
+pivots = {
+	"res://Scenes/Tiles/StraightRoad.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/CurveRoad.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/CrossRoad.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/TIntersection.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/TwoLane.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/CulDeSac.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/Roundabout.tscn": Vector3(0, 0, 0),
+	"res://Scenes/Tiles/Sidewalk.tscn": Vector3(0, 0, 0)
+}
