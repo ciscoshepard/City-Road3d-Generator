@@ -1,18 +1,18 @@
 """[gd_scene load_steps=2 format=3]
 
-[node name="CurveRoad" type="Node3D"]
+[node name="TwoLane" type="Node3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Mesh" type="MeshInstance3D" parent="Pivot"]
 mesh = BoxMesh.new()
-mesh.size = Vector3(10, 0.2, 10)
+mesh.size = Vector3(10, 0.3, 20)
 
 [node name="CollisionShape" type="CollisionShape3D" parent="Pivot"]
 shape = BoxShape3D.new()
-shape.size = Vector3(10, 0.2, 10)
+shape.size = Vector3(10, 0.3, 20)
 
 [node name="Material" type="StandardMaterial3D" parent="Mesh"]
-albedo_color = Color(0.12,0.12,0.12)
+albedo_color = Color(0.1,0.1,0.1)
 roughness = 0.9
 """
