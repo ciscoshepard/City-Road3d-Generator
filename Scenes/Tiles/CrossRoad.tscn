@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[node name="CrossRoad" type="Node3D"]
+rotation = Vector3(0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = BoxMesh.new()
+mesh.size = Vector3(10, 0.2, 10)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = BoxShape3D.new()
+shape.size = Vector3(10, 0.2, 10)
