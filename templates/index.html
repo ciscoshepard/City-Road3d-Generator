@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur 3D de Ville</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏙️ Générateur 3D de Réseau Routier de Ville</h1>
+            <p>Créez une ville avec des zones de densités variées pour votre jeu de divertissement</p>
+        </header>
+
+        <div class="main-content">
+            <div class="controls-panel">
+                <h2>Configuration de la Ville</h2>
+                
+                <div class="config-section">
+                    <h3>Dimensions</h3>
+                    <div class="input-group">
+                        <label for="width">Largeur (m):</label>
+                        <input type="number" id="width" value="1000" min="200" max="5000">
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Hauteur (m):</label>
+                        <input type="number" id="height" value="1000" min="200" max="5000">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Réseau Routier</h3>
+                    <div class="input-group">
+                        <label for="main_road_width">Largeur routes principales (m):</label>
+                        <input type="number" id="main_road_width" value="20" min="10" max="50" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="secondary_road_width">Largeur routes secondaires (m):</label>
+                        <input type="number" id="secondary_road_width" value="12" min="6" max="30" step="0.5">
+                    </div>
+                    <div class="input-group">
+                        <label for="local_road_width">Largeur routes locales (m):</label>
+                        <input type="number" id="local_road_width" value="8" min="4" max="20" step="0.5">
+                    </div>
+                </div>
+
+                <div class="config-section">
+                    <h3>Distribution des Zones (%)</h3>
+                    <div class="zone-controls">
+                        <div class="zone-control">
+                            <label for="residential">🏠 Résidentiel:</label>
+                            <input type="range" id="residential" min="0" max="50" value="35">
+                            <span id="residential-value">35%</span>
+                        </div>
+                        <div class="zone-control">
+                            <label for="commercial">🏪 Commercial:</label>
+                            <input type="range" id="commercial" min="0" max="30" value="15">
+                            <span id="commercial-value">15%</span>
+                        </div>
+                        <div class="zone-control">
+                            <label for="business">🏢 Business:</label>
+                            <input type="range" id="business" min="0" max="40" value="20">
+                            <span id="business-value">20%</span>
+                        </div>
+                        <div class="zone-control">
+                            <label for="leisure">🎪 Loisirs:</label>
+                            <input type="range" id="leisure" min="0" max="20" value="10">
+                            <span id="leisure-value">10%</span>
+                        </div>
+                        <div class="zone-control">
+                            <label for="parks">🌳 Parcs:</label>
+                            <input type="range" id="parks" min="0" max="30" value="15">
+                            <span id="parks-value">15%</span>
+                        </div>
+                        <div class="zone-control">
+                            <label for="industrial">🏭 Industriel:</label>
+                            <input type="range" id="industrial" min="0" max="15" value="5">
+                            <span id="industrial-value">5%</span>
+                        </div>
+                    </div>
+                    <div class="total-percentage">
+                        Total: <span id="total-percentage">100%</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="generate-btn" class="primary-btn">🚀 Générer la Ville</button>
+                    <button id="export-json-btn" class="secondary-btn" disabled>💾 Exporter JSON</button>
+                    <button id="export-obj-btn" class="secondary-btn" disabled>📦 Exporter 3D (.obj)</button>
+                </div>
+            </div>
+
+            <div class="visualization-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="2d-view">Vue 2D</button>
+                    <button class="tab-btn" data-tab="3d-view">Vue 3D</button>
+                    <button class="tab-btn" data-tab="stats-view">Statistiques</button>
+                </div>
+
+                <div id="2d-view" class="tab-content active">
+                    <div id="preview-container">
+                        <div class="placeholder">
+                            <p>🏙️ Générez une ville pour voir l'aperçu 2D</p>
+                        </div>
+                        <img id="city-preview" style="display: none;">
+                    </div>
+                </div>
+
+                <div id="3d-view" class="tab-content">
+                    <div id="3d-container">
+                        <div class="placeholder">
+                            <p>🎮 Vue 3D interactive (en cours de développement)</p>
+                            <p>Utilisez l'export 3D pour visualiser dans un logiciel externe</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="stats-view" class="tab-content">
+                    <div id="stats-container">
+                        <div class="placeholder">
+                            <p>📊 Générez une ville pour voir les statistiques</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Génération de la ville en cours...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
