@@ -214,6 +214,13 @@ python -m city_generator.main --cli \
     --export ville_industrielle.json
 ```
 
+**Exemple de sortie pour une ville de 800x600m:**
+- 🏙️ 45 zones générées  
+- 🏢 18 bâtiments créés
+- 🛣️ 466 routes tracées
+- ⚡ 27 intersections
+- 📦 Export JSON: 85KB
+
 ## 🤝 Contribution
 
 Les contributions sont bienvenues ! N'hésitez pas à :
